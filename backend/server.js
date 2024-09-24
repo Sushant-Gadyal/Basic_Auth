@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const userRouters = require("./routes/user");
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -15,6 +17,8 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use("/api/user", userRouters);
 
 app.get("/", function(req,res){
     res.send("hi");
